@@ -1,0 +1,39 @@
+#%RAML 0.8
+title: Ejemplo de Api Calculadora
+version: v1
+mediaType: application/json
+documentation:
+ - title: Revision
+   content: Este es un Ejemplo de un Api modelado en RAML para el servicio "Calculadora"
+
+/Calculadora:
+  description: Servicio Calculadora.
+  get:
+    description: Servicio que calcula las operaciones basicas, explicitas por parametro.
+    queryParameters:
+      oper1:
+        description: "Operador numero 1 requerido como una de las partes para realizar la operación"
+        required: true
+        minLength: 1
+        type: string
+        example: "4"
+      oper2:
+        description: "Operador numero 2 requerido como una de las partes para realizar la operación"
+        required: true
+        minLength: 1
+        type: string
+        example: "2"
+      oper:
+        description: "Descriptor de la operación que se va a realizar (Los permitidos aqui son: suma,resta, multiplicacion,division)"
+        required: true
+        minLength: 4
+        type: string
+        example: "suma"
+    responses:
+      200:
+        body:
+          text/plain:
+            example: |
+              {
+                "6"
+              }

@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Calculadora"
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/Tarea5/Calc",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/calc/{oper1}/{oper2}/{opera}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "oper1",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oper2",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "opera",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Result"
+            },
+            "headers": {
+              "oper1": {
+                "type": "string"
+              },
+              "oper2": {
+                "type": "string"
+              },
+              "opera": {
+                "type": "string"
+              }
+            }
+          }
+        } 
+       },      
+    },   
+  },
+  "definitions": {
+    "Input": {
+      "type": "string",
+      "required": [
+        "a",
+        "b",
+        "op"
+      ],
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string",
+          "description": "Operaciones correspondientes asi:['+', 'suma', '-', 'resta', '*', 'multiplicacion', '#', 'division']"
+        }
+      },
+      "title": "Input"
+    },
+    "Output": {
+      "type": "string",
+      "properties": {
+        "res": {
+          "type": "string"
+        }
+      },
+      "title": "Output"
+    },
+    "Resultado": {
+      "type": "string",
+      "properties": {
+        "input": {
+          "$ref": "#/definitions/Input"
+        },
+        "output": {
+          "$ref": "#/definitions/Output"
+        }
+      },
+      "title": "Resultado"
+    }
+  }  
+}
+            
